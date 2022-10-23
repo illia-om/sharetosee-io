@@ -1,5 +1,8 @@
 import { GetServerSideProps } from 'next';
-import ShareQr from '../components/share-qr';
+import dynamic from "next/dynamic";
+const ShareQr = dynamic(() => import('../components/share-qr'), { ssr: false });
+
+// import ShareQr from '../components/share-qr';
 import { generateQr } from '../lib/share-to-see';
 
 const TestPage = ({ data }: { data: string; }) => {
