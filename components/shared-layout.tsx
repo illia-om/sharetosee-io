@@ -8,8 +8,8 @@ const SharedLayout = ({children}: {
     const router = useRouter();
     const query = router.query;
 
-    const containerWidthClass = (query.share && query.screen ? utilStyles[`sharedContainerX${query.share}`] : utilStyles.sharedContainerX1);
-    const containerOffsetClass = query.share && query.screen ? utilStyles[`sharedContainerDisplay${query.screen}o${query.share}`] : '';
+    const containerWidthClass = (query.share && query.screen && Number(query.share) <= 3 ? utilStyles[`sharedContainerX${query.share}`] : utilStyles.sharedContainerX1);
+    const containerOffsetClass = query.share && query.screen && Number(query.share) <= 3 ? utilStyles[`sharedContainerDisplay${query.screen}o${query.share}`] : '';
     const sharedContainerClassName = `${containerWidthClass} ${containerOffsetClass}`
 
     return (

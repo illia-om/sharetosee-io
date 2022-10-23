@@ -22,14 +22,6 @@
     width: 300vw;
 }
 
-.sharedContainerX4 {
-    width: 400vw;
-}
-
-.sharedContainerX5 {
-    width: 500vw;
-}
-
 .sharedContainerDisplay1o2 {
     position: relative;
 }
@@ -37,4 +29,16 @@
 .sharedContainerDisplay2o2 {
     position: relative;
     right: 100vw;
+}
+
+.sharedContainerDisplay1o3 {
+    position: relative;
+}
+.sharedContainerDisplay2o3 {
+    position: relative;
+    right: 100vw;
+}
+.sharedContainerDisplay3o3 {
+    position: relative;
+    right: 200vw;
 }
