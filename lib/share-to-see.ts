@@ -8,7 +8,7 @@ export async function generateQr(path: string): Promise<string | undefined> {
         const apiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=${size}x${size}&data=${encodeURIComponent(urlToEncode)}`;
         console.log('apiUrl: ', apiUrl);
 
-        const method: number = 2;
+        const method: number = 1;
         switch (method) {
             case 1:
                 const response = await axios.get(apiUrl);
