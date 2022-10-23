@@ -1,27 +1,31 @@
 import { GetServerSideProps } from 'next';
 import dynamic from "next/dynamic";
+import { useEffect, useState } from 'react';
 const ShareQr = dynamic(() => import('../components/share-qr'), { ssr: false });
 
 // import ShareQr from '../components/share-qr';
 import { generateQr } from '../lib/share-to-see';
 
-const TestPage = ({ data }: { data: string; }) => {
+const TestPage = () => {
+    const [data, setData] = useState<string>('');
+
+    useEffect(() => {
+        
+        generateQr('http://localhost:3000/test')
+            .then((data) => {
+                if (data) {
+                    setData(data)
+                }
+            })
+    }, [])
+
+    if (!data) return <p>No data</p>
+
     return (
         <div>
-            <ShareQr qrUrl={data}/>
+            <ShareQr qrUrl={data} />
         </div>
     );
-}
-
-
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-    const url = await generateQr('http://localhost:3000/test');
-
-    return {
-        props: {
-            data: url
-        }
-    }
 }
 
 export default TestPage;
