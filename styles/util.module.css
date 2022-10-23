@@ -1,0 +1,40 @@
+.contaienr {
+    max-width: 1000px;
+    margin: auto;
+    padding: 10px;
+}
+
+.globalContainer {
+    width: 100vw;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.sharedContainerX1 {
+    width: 100vw;
+}
+
+.sharedContainerX2 {
+    width: 200vw;
+}
+
+.sharedContainerX3 {
+    width: 300vw;
+}
+
+.sharedContainerX4 {
+    width: 400vw;
+}
+
+.sharedContainerX5 {
+    width: 500vw;
+}
+
+.sharedContainerDisplay1o2 {
+    position: relative;
+}
+
+.sharedContainerDisplay2o2 {
+    position: relative;
+    right: 100vw;
+}
