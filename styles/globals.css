@@ -12,6 +12,11 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  color: dodgerblue;
+  text-decoration: underline;
+}
+
 * {
   box-sizing: border-box;
 }

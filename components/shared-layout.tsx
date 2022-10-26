@@ -1,15 +1,13 @@
 import utilStyles from '../styles/util.module.css';
-import { useRouter } from 'next/router'
 
 
-const SharedLayout = ({children}: {
-    children: React.ReactNode
+const SharedLayout = ({ children, screens, displayNumber }: {
+    children: React.ReactNode;
+    screens?: number;
+    displayNumber?: number;
 }) => {
-    const router = useRouter();
-    const query = router.query;
-
-    const containerWidthClass = (query.share && query.screen && Number(query.share) <= 3 ? utilStyles[`sharedContainerX${query.share}`] : utilStyles.sharedContainerX1);
-    const containerOffsetClass = query.share && query.screen && Number(query.share) <= 3 ? utilStyles[`sharedContainerDisplay${query.screen}o${query.share}`] : '';
+    const containerWidthClass = screens && displayNumber && screens <= 3 ? utilStyles[`sharedContainerX${screens}`] : utilStyles.sharedContainerX1;
+    const containerOffsetClass = screens && displayNumber && screens <= 3 ? utilStyles[`sharedContainerDisplay${displayNumber}o${screens}`] : '';
     const sharedContainerClassName = `${containerWidthClass} ${containerOffsetClass}`
 
     return (
