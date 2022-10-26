@@ -8,6 +8,9 @@ import utilStyles from '../../../styles/util.module.css';
 import Image from 'next/image';
 import { useContext } from 'react';
 import jwt from 'jsonwebtoken';
+import Pusher from "pusher";
+import { TSessionJwtPayload } from '../../../types';
+
 
 const DemoPageDisplay = ({
     data
@@ -45,7 +48,21 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
         return { notFound: true }
     }
     try {
-        const data = jwt.verify(ctx.query.t, process.env.JWT_SESSION_KEY!)
+        const data = jwt.verify(ctx.query.t, process.env.JWT_SESSION_KEY!) as TSessionJwtPayload;
+        if (data.m) {
+            const pusher = new Pusher({
+                appId: process.env.PUSHER_APP_ID!,
+                key: process.env.NEXT_PUBLIC_PUSHER_KEY!,
+                secret: process.env.PUSHER_SECRET!,
+                cluster: process.env.NEXT_PUBLIC_PUSHER_CLUSTER!,
+                useTLS: true
+            });
+            
+            pusher.trigger("my-channel", "my-event", {
+                opened: true
+            });
+        }
+
         return {
             props: {
                 data
